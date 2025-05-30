@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Academy - Where Excellence Meets Opportunity</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Cosmic Color Palette */
+        :root {
+            --cosmic-blue: #0f0c29;
+            --stellar-purple: #302b63;
+            --nebula-pink: #e94057;
+            --supernova-yellow: #f27121;
+            --galaxy-teal: #00b4db;
+            --starlight: #ffffff;
+            --dark-matter: #0a0a0a;
+            --black-hole: #000000;
+        }
+
+        /* Cosmic Background Animation */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--starlight);
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--stellar-purple));
+            overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Animated Starfield Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(ellipse at bottom, var(--cosmic-blue) 0%, var(--black-hole) 100%);
+            animation: starPulse 15s infinite alternate;
+        }
+
+        @keyframes starPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        /* Floating Stars */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+            z-index: -2;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+
+        /* Base Styles */
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            color: var(--supernova-yellow);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(242, 113, 33, 0.3);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .highlight:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Cosmic Button */
+        .cosmic-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--nebula-pink), var(--supernova-yellow));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .cosmic-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--supernova-yellow), var(--nebula-pink));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .cosmic-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cosmic-btn:hover::before {
+            opacity: 1;
+        }
+
+        .cosmic-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--nebula-pink), var(--supernova-yellow));
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+
+        /* Cosmic Navbar */
+        .navbar {
+            padding: 25px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            backdrop-filter: blur(10px);
+            background: rgba(15, 12, 41, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 5%;
+            background: rgba(15, 12, 41, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--starlight);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--supernova-yellow);
+        }
+
+        .nav-link {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 15px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--supernova-yellow);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--supernova-yellow);
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--starlight);
+            font-size: 1.8rem;
+        }
+
+        /* Home Section - Cosmic Hero */
+        .home-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-content {
+            z-index: 2;
+        }
+
+        .home-title {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--starlight), var(--galaxy-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 180, 219, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 180, 219, 0.8), 0 0 30px rgba(233, 64, 87, 0.5); }
+        }
+
+        .home-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .home-image {
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .home-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .home-img:hover {
+            transform: perspective(1000px) rotateY(0) rotateX(0);
+        }
+
+        /* About Section - Cosmic Vision */
+        .about-section {
+            background: linear-gradient(135deg, var(--stellar-purple), var(--cosmic-blue));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.02)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .about-text {
+            z-index: 1;
+        }
+
+        .about-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--starlight);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .vision-mission {
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .vision, .mission {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .vision:hover, .mission:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--supernova-yellow);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+
+        /* Testing Section - Cosmic Evaluation */
+        .testing-section {
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--stellar-purple));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.02)" d="M0,100 L100,0 L100,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .testing-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--starlight);
+        }
+
+        .testing-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .testing-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .testing-img:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+
+        /* Activities Section - Cosmic Experiences */
+        .activities-section {
+            background: linear-gradient(135deg, var(--stellar-purple), var(--cosmic-blue));
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .activities-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.02)" d="M0,0 L100,0 L50,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .activities-title {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(233, 64, 87, 0.1), transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: -1;
+        }
+
+        .activity-card:hover::before {
+            transform: scale(1);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(233, 64, 87, 0.3);
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--supernova-yellow);
+        }
+
+        .activity-heading {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .activity-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Cosmic Elements */
+        .cosmic-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: floatElement 15s infinite alternate;
+        }
+
+        @keyframes floatElement {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .home-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .vision-mission {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background: rgba(15, 12, 41, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px;
+            }
+            
+            .home-content, .about-text, .testing-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            
+            .home-section, .about-content, .testing-content {
+                flex-direction: column;
+            }
+            
+            .home-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .home-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cosmic-btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--nebula-pink), var(--supernova-yellow));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 15s infinite alternate;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--nebula-pink);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--galaxy-teal);
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--supernova-yellow);
+            top: 50%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background Elements -->
+    <div class="cosmic-bg"></div>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="#">Global<span>Academy</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testing">Testing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#activities">Activities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="home-content">
+                        <h1 class="home-title">Welcome to <span class="highlight">Global Academy</span></h1>
+                        <p class="home-description">Where Excellence Meets Opportunity in a Cosmic Learning Environment</p>
+                        <a href="#about" class="cosmic-btn">Explore Our Universe</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="home-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Global Academy Campus" class="home-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About <span class="highlight">Global Academy</span></h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="about-text">
+                        <p class="about-description">
+                            Welcome to Global Academy, where excellence meets innovation in a cosmic learning environment. Our campus is more than just a place of learning; it's a thriving hub for students to engage, explore, and grow into the leaders of tomorrow.
+                        </p>
+                        
+                        <div class="row vision-mission">
+                            <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="vision p-4 h-100">
+                                    <h3 class="section-heading"><i class="fas fa-eye"></i>Our Vision</h3>
+                                    <p>To be a globally recognized institution that nurtures visionary leaders who can create an impact in the world through knowledge and innovation.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="mission p-4 h-100">
+                                    <h3 class="section-heading"><i class="fas fa-rocket"></i>Our Mission</h3>
+                                    <p>Our mission is to provide world-class education by empowering our students with essential skills, ethical values, and opportunities for success in their professional and personal lives.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Global Academy Campus" class="about-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Section -->
+    <section id="testing" class="testing-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="testing-text">
+                        <h2 class="testing-title">Student <span class="highlight">Testing</span></h2>
+                        <p class="testing-description">
+                            At Global Academy, we ensure that our students receive continuous and comprehensive assessments through exams, projects, and quizzes. Our testing environment is designed to challenge our students while supporting their learning journey across the cosmos of knowledge.
+                        </p>
+                        <a href="#contact" class="cosmic-btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="testing-image">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Student Testing" class="testing-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities-section">
+        <div class="container">
+            <h2 class="activities-title" data-aos="fade-up">Cosmic <span class="highlight">Activities</span></h2>
+            
+            <div class="row activities-grid">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="activity-heading">Sports Events</h3>
+                        <p class="activity-description">
+                            Our students actively participate in sports, competing in both inter-college and national tournaments. We offer a variety of sports to cater to every interest.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="activity-heading">Cultural Events</h3>
+                        <p class="activity-description">
+                            Cultural events like drama, music, and dance are regularly organized to celebrate our students' creativity and talents. These events help foster a sense of community and belonging.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="activity-heading">Student Clubs</h3>
+                        <p class="activity-description">
+                            Our wide range of student clubs provide opportunities to students to pursue their hobbies, learn new skills, and build lifelong friendships.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contact <span class="highlight">Us</span></h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="about-text">
+                        <p class="about-description">
+                            Ready to embark on your cosmic educational journey with Global Academy? Reach out to us for more information about admissions, programs, and campus life.
+                        </p>
+                        
+                        <div class="row vision-mission">
+                            <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="vision p-4 h-100">
+                                    <h3 class="section-heading"><i class="fas fa-envelope"></i>Email Us</h3>
+                                    <p>info@globalacademy.edu</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="mission p-4 h-100">
+                                    <h3 class="section-heading"><i class="fas fa-phone"></i>Call Us</h3>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="cosmic-btn" data-aos="fade-up" data-aos-delay="600">Schedule a Visit</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Global Academy Contact" class="about-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-in-out'
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Create floating stars
+        const createStars = () => {
+            const starsContainer = document.body;
+            
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 5;
+                const opacity = Math.random() * 0.5 + 0.1;
+                
+                // Apply styles
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}px`;
+                star.style.top = `${posY}px`;
+                star.style.opacity = opacity;
+                star.style.animation = `twinkle ${duration}s infinite ${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        };
+        
+        // Create stars after page loads
+        window.addEventListener('load', createStars);
+
+        // Parallax effect for cosmic elements
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            const shape1 = document.querySelector('.shape-1');
+            const shape2 = document.querySelector('.shape-2');
+            const shape3 = document.querySelector('.shape-3');
+            
+            shape1.style.transform = `translateY(${scrollPosition * 0.2}px) rotate(${scrollPosition * 0.1}deg)`;
+            shape2.style.transform = `translateY(${scrollPosition * 0.15}px) rotate(${-scrollPosition * 0.1}deg)`;
+            shape3.style.transform = `translateY(${scrollPosition * 0.1}px) rotate(${scrollPosition * 0.05}deg)`;
+        });
+    </script>
+</body>
+</html>
